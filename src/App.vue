@@ -1,15 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="wrapper">
+    <ResultField result="123" />
+    <MyButtons value="8"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MyButtons from './components/MyButtons.vue'
+import ResultField from "@/components/ResultField.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ResultField,
+    MyButtons
   }
 }
 </script>
@@ -21,6 +25,20 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  background-color: yellow;
+  height: 500px;
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
