@@ -1,44 +1,23 @@
 <template>
   <div class="myButtons">
-    <div class="line">
-      <button class="button">AC</button>
-      <button class="button">+/-</button>
-      <button class="button">%</button>
-      <button class="button">/</button>
+    <div class="line" v-for="(line, index) in valuesForButton" :key="index">
+      <ButtonComponent v-for="(buttonObj, index) in line"  :key="index" :updateResultValue="updateResultValue" :valueForButton="buttonObj.valueForButton"/>
     </div>
-    <div class="line">
-      <button class="button">7</button>
-      <button class="button">8</button>
-      <button class="button">9</button>
-      <button class="button">x</button>
-    </div>
-    <div class="line">
-      <button class="button">4</button>
-      <button class="button">5</button>
-      <button class="button">6</button>
-      <button class="button">-</button>
-    </div>
-    <div class="line">
-      <button class="button">1</button>
-      <button class="button">2</button>
-      <button class="button">3</button>
-      <button class="button">+</button>
-    </div>
-    <div class="line">
-      <button class="button">TH</button>
-      <button class="button">0</button>
-      <button class="button">,</button>
-      <button class="button">=</button>
-    </div>
-
   </div>
 </template>
 
 <script>
+
+import ButtonComponent from "@/components/ButtonComponent.vue";
+
 export default {
   name: 'MyButtons',
   props: {
-    value: String
+    valuesForButton: Array,
+    ['updateResultValue']: Function,
+  },
+  components: {
+    ButtonComponent
   }
 }
 </script>
@@ -64,10 +43,5 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-.button {
-  height: 70px;
-  width: 70px;
-  font-size: 25px;
 }
 </style>

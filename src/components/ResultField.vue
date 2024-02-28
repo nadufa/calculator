@@ -1,7 +1,7 @@
 <template>
   <div class="ResultFieldWrap">
     <div class="ResultField">
-      <h1 class="Result">123</h1>
+      <h1 class="Result">{{result}}</h1>
     </div>
   </div>
 </template>
@@ -17,9 +17,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
+
 .ResultFieldWrap {
   background-color: peachpuff;
   height: 25%;
