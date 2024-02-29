@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div :class="['Wrapper', { SeaTheme: this.state.seaTheme }]">
     <ResultField :result="state.resultArray.join('')" />
     <MyButtons :updateResultValue="onButtonClick" :valuesForButton="state.valuesForButton" />
   </div>
@@ -19,6 +19,7 @@ export default {
     return {
       state: {
         resultArray: [],
+        seaTheme: false,
         valuesForButton: [
           [{ valueForButton: "AC" }, { valueForButton: "+/-" }, { valueForButton: "%" }, { valueForButton: "/" }],
           [{ valueForButton: "7" }, { valueForButton: "8" }, { valueForButton: "9" }, { valueForButton: "*" }],
@@ -36,7 +37,7 @@ export default {
       if (newSign === "AC") {
         clearExpression();
       } else if (newSign === "TH") {
-        alert("THEME WAS CHANGED");
+        this.state.seaTheme = !this.state.seaTheme;
       } else if (newSign === "+/-") {
         toggleSign();
       } else if (newSign === "=") {
@@ -102,7 +103,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #0b1138;
+  background-color: #cffff8;
   width: 100%;
   height: 100%;
   display: flex;
@@ -110,7 +111,7 @@ export default {
   align-items: center;
 }
 
-.wrapper {
+.Wrapper {
   background-color: #e3d3ff;
   height: 500px;
   width: 350px;
@@ -121,5 +122,8 @@ export default {
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 0 15px black;
+}
+.SeaTheme {
+  background-color: #40afa6;
 }
 </style>
