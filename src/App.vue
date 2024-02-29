@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       state: {
-        resultArray: ['0'],
+        resultArray: [],
         valuesForButton: [
           [{valueForButton: 'AC'}, {valueForButton: '+/-'}, {valueForButton: '%'}, {valueForButton: '/'},],
           [{valueForButton: '7'}, {valueForButton: '8'}, {valueForButton: '9'}, {valueForButton: '*'},],
@@ -31,35 +31,64 @@ export default {
   },
   methods: {
     onButtonClick(newSign) {
-      const newSignIsNumber = this.isItNumber(newSign)
+
+      let expression = this.state.resultArray;
+
       if (newSign === 'AC') {
-        console.log(this.state.resultArray[this.state.resultArray.length - 1])
-        this.state.resultArray = [0]
-        console.log(this.state.resultArray[this.state.resultArray.length - 1])
+        clearExpression()
       } else if (newSign === 'TH') {
         alert('THEME WAS CHANGED')
-      } else if (this.state.resultArray.length === 1 && this.state.resultArray[0] === '0' && newSign === '0') {
-        alert('it is already 0')
-      } else if (this.state.resultArray.length === 1 && this.state.resultArray[0] === '0' && newSignIsNumber) {
-        this.state.resultArray = [`${newSign}`]
-      } else if (!newSignIsNumber && !this.isItNumber(this.state.resultArray[this.state.resultArray.length - 1])) {
-        alert('you can not put two math signs in a row')
+      } else if (newSign === '+/-') {
+        toggleSign()
       } else if (newSign === '=') {
-        if (!this.isItNumber(this.state.resultArray[this.state.resultArray.length - 1])) {
-          alert('expression should be end with a number ')
-        }
+        calculate()
       } else {
-        this.state.resultArray.push(newSign)
+        addToExpression(newSign)
+      }
+
+      function addToExpression(value) {
+
+        if (expression.length === 0 && isMathOperator(value)) {
+          alert('you can not start expression with math operator')
+        } else {
+          const lastElement = expression[expression.length - 1];
+          if (lastElement && isMathOperator(lastElement) && isMathOperator(value)) {
+            expression[expression.length - 1] = value;
+          } else {
+            expression.push(value)
+          }
+        }
+
+      }
+
+      function isMathOperator(value) {
+        return ['+', '-', '*', '/', ',', '%'].includes(value);
       }
 
 
+      function clearExpression() {
+        console.log('clear')
+        expression.splice(0, expression.length);
+      }
+
+      function toggleSign() {
+        const lastElement = expression[expression.length - 1];
+        if (lastElement && !isMathOperator(lastElement)) {
+          expression[expression.length - 1] = -parseFloat(lastElement);
+        }
+      }
+
+      function calculate() {
+        const result = evaluateExpression();
+        clearExpression();
+        expression.unshift(result);
+      }
+
+      function evaluateExpression() {
+        const expressionString = expression.join('');
+        return eval(expressionString);
+      }
     },
-    isItNumber(sign) {
-      return sign === '0' || sign === '1' || sign === '2' || sign === '3' || sign === '4' || sign === '5' || sign === '6' || sign === '7' || sign === '8' || sign === '9'
-    },
-    calculateResult(arr) {
-      console.log(arr)
-    }
   }
 }
 </script>
