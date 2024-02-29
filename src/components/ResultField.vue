@@ -19,21 +19,24 @@ export default {
 <style scoped>
 
 .ResultFieldWrap {
-  background-color: peachpuff;
-  height: 25%;
-  width: 100%;
+  background-color: rgba(219, 175, 255, 0.5);
+  height: 23%;
+  width: 98%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 .ResultField {
-  background-color: #b9fff9;
+  background-color: #f8f9ff;
   height: 70%;
   width: 90%;
   display: flex;
   justify-content: end;
   align-items: center;
   padding: 10px;
+  overflow: auto;
+  border-radius: 10px;
 }
 .Result {
   font-size: 40px;

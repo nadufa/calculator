@@ -29,9 +29,10 @@ h3 {
 }
 .myButtons {
   padding: 5px;
-  background-color: #dbafff;
-  height: 75%;
-  width: 100%;
+  background-color: rgba(219, 175, 255, 0.5);
+  border-radius: 5px;
+  height: 73%;
+  width: 98%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

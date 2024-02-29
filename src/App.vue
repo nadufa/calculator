@@ -24,7 +24,7 @@ export default {
           [{valueForButton: '7'}, {valueForButton: '8'}, {valueForButton: '9'}, {valueForButton: '*'},],
           [{valueForButton: '4'}, {valueForButton: '5'}, {valueForButton: '6'}, {valueForButton: '-'},],
           [{valueForButton: '1'}, {valueForButton: '2'}, {valueForButton: '3'}, {valueForButton: '+'},],
-          [{valueForButton: 'TH'}, {valueForButton: '0'}, {valueForButton: ','}, {valueForButton: '='},],
+          [{valueForButton: 'TH'}, {valueForButton: '0'}, {valueForButton: '='},],
         ]
       }
     }
@@ -54,7 +54,7 @@ export default {
           const lastElement = expression[expression.length - 1];
           if (lastElement && isMathOperator(lastElement) && isMathOperator(value)) {
             expression[expression.length - 1] = value;
-          } else {
+          } else if (expression.length <= 50) {
             expression.push(value)
           }
         }
@@ -86,10 +86,6 @@ export default {
 
       function calculateExpression() {
         let expressionString = expression.join('');
-        if (expressionString.includes(',')) {
-          expressionString = expressionString.replace(',', '.');
-        }
-
         let result;
         try {
           result = Function(`'use strict'; return (${expressionString})`)();
@@ -110,8 +106,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  background-color: black;
+  background-color: #0b1138;
   width: 100%;
   height: 100%;
   display: flex;
@@ -120,12 +115,16 @@ export default {
 }
 
 .wrapper {
-  background-color: yellow;
+  background-color: #e3d3ff;
   height: 500px;
-  width: 310px;
+  width: 350px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 15px black;
+
 }
 </style>
