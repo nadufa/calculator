@@ -62,7 +62,7 @@ export default {
       }
 
       function isMathOperator(value) {
-        return ['+', '-', '*', '/', ',', '%'].includes(value);
+        return ['+', '-', '*', '/', ',', '%', ','].includes(value);
       }
 
 
@@ -73,20 +73,31 @@ export default {
 
       function toggleSign() {
         const lastElement = expression[expression.length - 1];
-        if (lastElement && !isMathOperator(lastElement)) {
+        if (!isMathOperator(lastElement)) {
           expression[expression.length - 1] = -parseFloat(lastElement);
         }
       }
 
       function calculate() {
-        const result = evaluateExpression();
+        const result = calculateExpression();
         clearExpression();
         expression.unshift(result);
       }
 
-      function evaluateExpression() {
-        const expressionString = expression.join('');
-        return eval(expressionString);
+      function calculateExpression() {
+        let expressionString = expression.join('');
+        if (expressionString.includes(',')) {
+          expressionString = expressionString.replace(',', '.');
+        }
+
+        let result;
+        try {
+          result = Function(`'use strict'; return (${expressionString})`)();
+        } catch (error) {
+          result = 'Error';
+        }
+
+        return result;
       }
     },
   }
