@@ -44,11 +44,11 @@ export default {
 }
 
 .seaTheme {
-  border: 3px solid rgba(22, 150, 178, 0.5);
+  border: 3px solid #b3c6ff;
 }
 
 .seaTheme.WithoutNumber {
-  background-color: #bdcbff;
+  background-color: #cbd7ff;
 }
 
 .Zero {
@@ -60,6 +60,7 @@ export default {
 }
 
 .Button:active {
+  border-width: 5px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }

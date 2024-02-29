@@ -195,6 +195,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .Wrapper {
@@ -207,7 +208,7 @@ export default {
 }
 
 .SeaThemeWrapper {
-  background: linear-gradient(rgba(15, 14, 31, 0.95), rgba(16, 11, 96, 0.95));
+  background: linear-gradient(rgba(15, 14, 31, 0.95), rgba(16, 11, 96, 0.8));
 }
 
 .Calculator {
