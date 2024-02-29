@@ -40,11 +40,11 @@ export default {
 }
 
 .WithoutNumber {
-  background-color: #f7d7ff;
+  background-color: #f7dbff;
 }
 
 .seaTheme {
-  border: 3px solid #b3c6ff;
+  border: 3px solid #b3b7ff;
 }
 
 .seaTheme.WithoutNumber {

@@ -151,7 +151,6 @@ export default {
       }
 
       function clearExpression() {
-        console.log("clear");
         expression.splice(0, expression.length);
       }
 
@@ -163,9 +162,20 @@ export default {
       }
 
       function calculate() {
-        const result = calculateExpression();
+        let result = calculateExpression();
         clearExpression();
-        expression.unshift(result);
+
+        if (result !== "Error") {
+          result = result.toString(); // Преобразование числового результата в строку
+          let index = result.indexOf(".");
+          if (index !== -1) {
+            alert("The result will be rounded");
+            result = result.substring(0, index);
+          }
+          expression.unshift(result);
+        } else {
+          expression.unshift(result);
+        }
       }
 
       function calculateExpression() {
@@ -204,7 +214,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(#f4d1ff, #fffef6);
+  background: linear-gradient(#f8ddff, #fffef6);
 }
 
 .SeaThemeWrapper {
@@ -212,7 +222,7 @@ export default {
 }
 
 .Calculator {
-  background-color: #e3d3ff;
+  background-color: #eae3ff;
   height: 500px;
   width: 350px;
   padding: 15px;
@@ -225,7 +235,7 @@ export default {
 }
 
 .SeaThemeCalculator {
-  background-color: #cffff8;
+  background-color: #e6fff9;
   box-shadow: 0 0 15px #000000;
 }
 </style>
