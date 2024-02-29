@@ -1,17 +1,19 @@
 <template>
   <div class="ButtonWrap">
-    <button :class="['Button', { 'Zero': valueForButton === '0' }]" @click="updateResultValue(valueForButton)">{{ valueForButton }}</button>
+    <button :class="['Button', { Zero: valueForButton === '0' }]" @click="updateResultValue(valueForButton)">
+      {{ valueForButton }}
+    </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ButtonComponent',
+  name: "ButtonComponent",
   props: {
     valueForButton: String,
-    ['updateResultValue']: Function,
-  }
-}
+    ["updateResultValue"]: Function,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

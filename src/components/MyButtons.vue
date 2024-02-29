@@ -1,25 +1,29 @@
 <template>
   <div class="myButtons">
     <div class="line" v-for="(line, index) in valuesForButton" :key="index">
-      <ButtonComponent v-for="(buttonObj, index) in line"  :key="index" :updateResultValue="updateResultValue" :valueForButton="buttonObj.valueForButton"/>
+      <ButtonComponent
+        v-for="(buttonObj, index) in line"
+        :key="index"
+        :updateResultValue="updateResultValue"
+        :valueForButton="buttonObj.valueForButton"
+      />
     </div>
   </div>
 </template>
 
 <script>
-
 import ButtonComponent from "@/components/ButtonComponent.vue";
 
 export default {
-  name: 'MyButtons',
+  name: "MyButtons",
   props: {
     valuesForButton: Array,
-    ['updateResultValue']: Function,
+    ["updateResultValue"]: Function,
   },
   components: {
-    ButtonComponent
-  }
-}
+    ButtonComponent,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

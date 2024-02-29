@@ -1,23 +1,22 @@
 <template>
   <div class="ResultFieldWrap">
     <div class="ResultField">
-      <h1 class="Result">{{result}}</h1>
+      <h1 class="Result">{{ result }}</h1>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ResultField',
+  name: "ResultField",
   props: {
-    result: String
-  }
-}
+    result: String,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .ResultFieldWrap {
   background-color: rgba(219, 175, 255, 0.5);
   height: 23%;
