@@ -1,5 +1,5 @@
 <template>
-  <div class="ResultFieldWrap">
+  <div :class="['ResultFieldWrap', { seaTheme: seaTheme }]">
     <div class="ResultField">
       <h1 class="Result">{{ result }}</h1>
     </div>
@@ -11,6 +11,7 @@ export default {
   name: "ResultField",
   props: {
     result: String,
+    seaTheme: Boolean,
   },
 };
 </script>
@@ -18,7 +19,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .ResultFieldWrap {
-  background-color: rgba(219, 175, 255, 0.5);
+  background-color: rgba(211, 160, 255, 0.5);
   height: 23%;
   width: 98%;
   display: flex;
@@ -26,6 +27,11 @@ export default {
   align-items: center;
   border-radius: 5px;
 }
+
+.seaTheme {
+  background-color: #bdcbff;
+}
+
 .ResultField {
   background-color: #f8f9ff;
   height: 70%;
@@ -37,6 +43,7 @@ export default {
   overflow: auto;
   border-radius: 10px;
 }
+
 .Result {
   font-size: 40px;
 }

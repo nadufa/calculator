@@ -1,6 +1,9 @@
 <template>
   <div class="ButtonWrap">
-    <button :class="['Button', { Zero: valueForButton === '0' }]" @click="updateResultValue(valueForButton)">
+    <button
+      :class="['Button', { Zero: valueForButton === '0', WithoutNumber: !withNumber, seaTheme: seaTheme }]"
+      @click="updateResultValue(valueForButton)"
+    >
       {{ valueForButton }}
     </button>
   </div>
@@ -11,6 +14,8 @@ export default {
   name: "ButtonComponent",
   props: {
     valueForButton: String,
+    seaTheme: Boolean,
+    withNumber: Boolean,
     ["updateResultValue"]: Function,
   },
 };
@@ -23,14 +28,27 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .Button {
   height: 60px;
   width: 70px;
   font-size: 30px;
   background-color: #f8f9ff;
   border-radius: 5px;
-  border: none;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgb(211, 160, 255);
+}
+
+.WithoutNumber {
+  background-color: #f7d7ff;
+}
+
+.seaTheme {
+  border: 3px solid rgba(22, 150, 178, 0.5);
+}
+
+.seaTheme.WithoutNumber {
+  background-color: #bdcbff;
 }
 
 .Zero {
@@ -38,11 +56,11 @@ export default {
 }
 
 .Button:hover {
-  box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
 
 .Button:active {
-  background-color: #ededff;
-  box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }
 </style>

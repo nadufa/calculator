@@ -1,7 +1,13 @@
 <template>
-  <div :class="['Wrapper', { SeaTheme: this.state.seaTheme }]">
-    <ResultField :result="state.resultArray.join('')" />
-    <MyButtons :updateResultValue="onButtonClick" :valuesForButton="state.valuesForButton" />
+  <div :class="['Wrapper', { SeaThemeWrapper: this.state.seaTheme }]">
+    <div :class="['Calculator', { SeaThemeCalculator: this.state.seaTheme }]">
+      <ResultField :seaTheme="state.seaTheme" :result="state.resultArray.join('')" />
+      <MyButtons
+        :seaTheme="state.seaTheme"
+        :updateResultValue="onButtonClick"
+        :valuesForButton="state.valuesForButton"
+      />
+    </div>
   </div>
 </template>
 
@@ -21,11 +27,92 @@ export default {
         resultArray: [],
         seaTheme: false,
         valuesForButton: [
-          [{ valueForButton: "AC" }, { valueForButton: "+/-" }, { valueForButton: "%" }, { valueForButton: "/" }],
-          [{ valueForButton: "7" }, { valueForButton: "8" }, { valueForButton: "9" }, { valueForButton: "*" }],
-          [{ valueForButton: "4" }, { valueForButton: "5" }, { valueForButton: "6" }, { valueForButton: "-" }],
-          [{ valueForButton: "1" }, { valueForButton: "2" }, { valueForButton: "3" }, { valueForButton: "+" }],
-          [{ valueForButton: "TH" }, { valueForButton: "0" }, { valueForButton: "=" }],
+          [
+            {
+              withNumber: false,
+              valueForButton: "AC",
+            },
+            {
+              withNumber: false,
+              valueForButton: "+/-",
+            },
+            {
+              withNumber: false,
+              valueForButton: "%",
+            },
+            {
+              withNumber: false,
+              valueForButton: "/",
+            },
+          ],
+          [
+            {
+              withNumber: true,
+              valueForButton: "7",
+            },
+            {
+              withNumber: true,
+              valueForButton: "8",
+            },
+            {
+              withNumber: true,
+              valueForButton: "9",
+            },
+            {
+              withNumber: false,
+              valueForButton: "*",
+            },
+          ],
+          [
+            {
+              withNumber: true,
+              valueForButton: "4",
+            },
+            {
+              withNumber: true,
+              valueForButton: "5",
+            },
+            {
+              withNumber: true,
+              valueForButton: "6",
+            },
+            {
+              withNumber: false,
+              valueForButton: "-",
+            },
+          ],
+          [
+            {
+              withNumber: true,
+              valueForButton: "1",
+            },
+            {
+              withNumber: true,
+              valueForButton: "2",
+            },
+            {
+              withNumber: true,
+              valueForButton: "3",
+            },
+            {
+              withNumber: false,
+              valueForButton: "+",
+            },
+          ],
+          [
+            {
+              withNumber: false,
+              valueForButton: "TH",
+            },
+            {
+              withNumber: true,
+              valueForButton: "0",
+            },
+            {
+              withNumber: false,
+              valueForButton: "=",
+            },
+          ],
         ],
       },
     };
@@ -103,7 +190,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #cffff8;
   width: 100%;
   height: 100%;
   display: flex;
@@ -112,6 +198,19 @@ export default {
 }
 
 .Wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#f4d1ff, #fffef6);
+}
+
+.SeaThemeWrapper {
+  background: linear-gradient(rgba(15, 14, 31, 0.95), rgba(16, 11, 96, 0.95));
+}
+
+.Calculator {
   background-color: #e3d3ff;
   height: 500px;
   width: 350px;
@@ -121,9 +220,11 @@ export default {
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0 0 15px black;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
-.SeaTheme {
-  background-color: #40afa6;
+
+.SeaThemeCalculator {
+  background-color: #cffff8;
+  box-shadow: 0 0 15px #000000;
 }
 </style>
