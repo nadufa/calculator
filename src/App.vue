@@ -134,11 +134,14 @@ export default {
       }
 
       function addToExpression(value) {
-        if (expression.length === 0 && isMathOperator(value)) {
-          alert("you can not start expression with math operator");
+        if (expression.length === 0 && isMathOperator(value) && value !== "-") {
+          alert("you can not start expression with this math operator");
         } else {
           const lastElement = expression[expression.length - 1];
-          if (lastElement && isMathOperator(lastElement) && isMathOperator(value)) {
+          if (
+            (lastElement && isMathOperator(lastElement) && isMathOperator(value)) ||
+            (expression.length === 1 && expression[0] === "0")
+          ) {
             expression[expression.length - 1] = value;
           } else if (expression.length <= 50) {
             expression.push(value);
@@ -147,7 +150,7 @@ export default {
       }
 
       function isMathOperator(value) {
-        return ["+", "-", "*", "/", ",", "%", ","].includes(value);
+        return ["+", "-", "*", "/", ",", "%", ",", "+/-"].includes(value);
       }
 
       function clearExpression() {
@@ -236,6 +239,6 @@ export default {
 
 .SeaThemeCalculator {
   background-color: #e6fff9;
-  box-shadow: 0 0 15px #000000;
+  box-shadow: 0 0 20px #000000;
 }
 </style>

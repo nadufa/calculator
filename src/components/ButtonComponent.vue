@@ -36,7 +36,7 @@ export default {
   background-color: #f8f9ff;
   border-radius: 5px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-  border: 3px solid rgb(211, 160, 255);
+  border: 2px solid rgb(211, 160, 255);
 }
 
 .WithoutNumber {
@@ -44,7 +44,7 @@ export default {
 }
 
 .seaTheme {
-  border: 3px solid #b3b7ff;
+  border: 2px solid #aaa5ff;
 }
 
 .seaTheme.WithoutNumber {
@@ -60,7 +60,7 @@ export default {
 }
 
 .Button:active {
-  border-width: 5px;
+  border-width: 3px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }
